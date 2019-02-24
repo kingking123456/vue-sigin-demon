@@ -1,0 +1,71 @@
+ <template>
+  <div class="home-container">
+    <h1>登录后台系统</h1>
+    <el-form ref="form" label-width="80px">
+      <el-form-item label="用户名">
+        <el-input v-model="username"></el-input>
+      </el-form-item>
+      <el-form-item label="密码">
+        <el-input v-model="password"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="sigin">立即登录</el-button>
+        <el-button>忘记密码</el-button>
+      </el-form-item>
+    </el-form>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      username: "",
+      password: ""
+    };
+  },
+  methods: {
+    sigin() {
+      let { username, password } = this;
+      if (username.trim().length == 0 || password.trim().length == 0) {
+        return this.$message({
+          showClose: true,
+          message: "用户名或者密码不能为空哦哦!",
+          type: "warning"
+        });
+      }
+      this.$http.post("/users/login", {
+        username,
+        password
+      })
+        .then(response => {
+          /// console.log(response.data);
+          this.$message({
+            showClose: true,
+            message: response.data.succMsg,
+            type: "success"
+          });
+        })
+        .catch(error => {
+          // console.log(error.data);
+          this.$message({
+            showClose: true,
+            message: error.response.data.errMsg,
+            type: "error"
+          });
+        });
+    }
+  }
+};
+</script>
+<style lang="less">
+.home-container {
+  width: 600px;
+  margin: 100px auto;
+  h1 {
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+  }
+}
+</style>
+  
