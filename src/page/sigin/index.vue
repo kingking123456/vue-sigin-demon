@@ -1,5 +1,5 @@
  <template>
-  <div class="home-container">
+  <div class="sigin-container">
     <h1>登录后台系统</h1>
     <el-form ref="form" label-width="80px">
       <el-form-item label="用户名">
@@ -38,13 +38,17 @@ export default {
         password
       })
         .then(response => {
-          /// console.log(response.data);
+          // console.log(response.data);
           this.$message({
             showClose: true,
             message: response.data.succMsg,
             type: "success"
           });
+          localStorage.setItem('token', response.data.data.token)
+          localStorage.setItem('userInfo',JSON.stringify(response.data.data))
+          this.$router.push('/home')
         })
+        
         .catch(error => {
           // console.log(error.data);
           this.$message({
@@ -58,7 +62,7 @@ export default {
 };
 </script>
 <style lang="less">
-.home-container {
+.sigin-container {
   width: 600px;
   margin: 100px auto;
   h1 {
