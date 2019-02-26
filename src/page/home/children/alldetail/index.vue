@@ -99,8 +99,8 @@ export default {
       this.$http
         .get("users/getReceiverAddress")
         .then(response => {
-          console.log(response.data);
-          this.allDetail = response.data;
+          console.log(response.data.data);
+          this.allDetail = response.data.data
         })
         .catch(error => {
           this.$message({
