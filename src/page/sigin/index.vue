@@ -10,7 +10,7 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="sigin">立即登录</el-button>
-        <el-button>忘记密码</el-button>
+        <router-link to="/sigup"><el-button type="info" style="margin-left:50px;">去注册</el-button></router-link>
       </el-form-item>
     </el-form>
   </div>

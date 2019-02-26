@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import siginComponent from './page/sigin'
 import homeComponent from './page/home'
 import childrenDetailComponent from '@/page/home/children/alldetail'
+import sigupComponent  from './page/sigup'
 
 Vue.use(Router)
 
@@ -10,6 +11,7 @@ let router = new Router({
   routes: [
     { path: '/', redirect: '/sigin' },
     { path: '/sigin', component: siginComponent },
+    { path: '/sigup', component: sigupComponent },
     {
       path: '/home',
       component: homeComponent,
@@ -32,7 +34,7 @@ router.beforeEach(function (to, from, next) {
       判断token是否存在
       如果存在就正常导航
       不存在就跳转到登录页面 */
-  if(token || to.path==='/sigin'||to.path==="/sigout"){
+  if(token || to.path==='/sigin'||to.path==="/sigup"){
     next()
   }else{
     next('/')
