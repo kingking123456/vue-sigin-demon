@@ -44,13 +44,13 @@ export default {
           //console.log(response.data.data);
           this.allDetail = response.data.data
         })
-        .catch(error => {
-          this.$message({
-            showClose: true,
-            message: error.response.data.errMsg,
-            type: "error"
-          });
-        });
+        // .catch(error => {
+        //   this.$message({
+        //     showClose: true,
+        //     message: error.response.data.errMsg,
+        //     type: "error"
+        //   });
+        // });
     }
   }
 };

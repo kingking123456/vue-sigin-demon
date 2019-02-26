@@ -33,10 +33,11 @@ export default {
           type: "warning"
         });
       }
-      this.$http.post("/users/login", {
-        username,
-        password
-      })
+      this.$http
+        .post("/users/login", {
+          username,
+          password
+        })
         .then(response => {
           // console.log(response.data);
           this.$message({
@@ -44,19 +45,19 @@ export default {
             message: response.data.succMsg,
             type: "success"
           });
-          localStorage.setItem('token', response.data.data.token)
-          localStorage.setItem('userInfo',JSON.stringify(response.data.data))
-          this.$router.push('/home')
+          localStorage.setItem("token", response.data.data.token);
+          localStorage.setItem("userInfo", JSON.stringify(response.data.data));
+          this.$router.push("/home");
         })
-        
-        .catch(error => {
-          // console.log(error.data);
-          this.$message({
-            showClose: true,
-            message: error.response.data.errMsg,
-            type: "error"
-          });
-        });
+
+        // .catch(error => {
+        //   console.log(error.data);
+        //   this.$message({
+        //     showClose: true,
+        //     message: error.response.data.errMsg,
+        //     type: "error"
+        //   });
+        // });
     }
   }
 };

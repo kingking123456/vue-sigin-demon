@@ -23,7 +23,7 @@ let router = new Router({
 router.beforeEach(function (to, from, next) {
   let token = localStorage.getItem('token') || ''
 
-  console.log(to, from)
+  //console.log(to, from)
   /* 登录已经拦截状态 */
   if (token && to.path === '/sigin') {
     return next('/home')
